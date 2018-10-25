@@ -20,5 +20,9 @@
   "homepage": "https://github.com/theGreatVBNZ/course-bootstrap#readme",
   "devDependencies": {
     "lite-server": "^2.4.0"
+  },
+  "dependencies": {
+    "bootstrap-social": "^5.1.1",
+    "font-awesome": "^4.7.0"
   }
 }
