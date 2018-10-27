@@ -44,8 +44,8 @@
     </nav>
 
     <!-- role="dialog" означает, что элемент появляется поверх страницы -->
-    <div id="loginModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg" role="conent">
+    <div id="loginModal" class="modal fade" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Login</h4>
@@ -82,6 +82,87 @@
         </div>
     </div>
 
+    <!-- Закрытие формы через Escape производится при добавлении tabindex="-1" -->
+    <div id="reserveModal" class="modal fade" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Reserve a Table</h4>
+                    <!-- &times; - спецсимовл, которого нет на клавиатуре, изображает крестик (умножение) -->
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <form>
+                        <!-- persons selector -->
+                        <dl class="row">
+                            <label class="col-sm-2 control-label">Number of Guests</label>
+                            <div class="col-12 col-sm-7 justify-content-center">
+                                <div class="row">
+                                    <div class="col-5 col-sm-2">
+                                        <label class="radio-inline"> <input type="radio" name="persons" value="1" checked> <b>1</b> </label>
+                                    </div>
+                                    <div class="col-5 col-sm-2">
+                                        <label class="radio-inline"> <input type="radio" name="persons" value="2"> <b>2</b> </label>
+                                    </div>
+                                    <div class="col-5 col-sm-2">
+                                        <label class="radio-inline"> <input type="radio" name="persons" value="3"> <b>3</b> </label>
+                                    </div>
+                                    <div class="col-5 col-sm-2">
+                                        <label class="radio-inline"> <input type="radio" name="persons" value="4"> <b>4</b> </label>
+                                    </div>
+                                    <div class="col-5 col-sm-2">
+                                        <label class="radio-inline"> <input type="radio" name="persons" value="5"> <b>5</b> </label>
+                                    </div>
+                                    <div class="col-5 col-sm-2">
+                                        <label class="radio-inline"> <input type="radio" name="persons" value="6"> <b>6</b> </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </dl>
+
+                        <!-- Date and Time -->
+                        <dl class="row">
+                            <label class="col-sm-2 control-label">Date and Time</label>
+                            <div class="col-12 col-sm-9 justify-content-center">
+                                <div class="row">
+                                    <div class="col-12 col-sm-5">
+                                        <input type="text" class="form-control" id="date" placeholder="Date">
+                                    </div>
+                                    <div class="col-12 col-sm-5">
+                                        <input type="text" class="form-control" id="time" placeholder="Time">
+                                    </div>
+                                </div>
+                            </div>
+                        </dl>
+
+                        <!-- Smoking selector -->
+                        <dl class="row">
+                            <label class="col-sm-2 control-label">Section</label>
+                                <div class="col-sm btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-success active">
+                                        <input type="radio" name="options" autocomplete="off" checked>Non-Smoking
+                                    </label>
+                                    <label class="btn btn-danger">
+                                        <input type="radio" name="options" autocomplete="off">Smoking
+                                    </label>
+                                </div>
+                        </dl>
+
+                        <!-- Buttons -->
+                        <dl class="row">
+                            <div class="col-sm-5 offset-sm-2">
+                                <!-- за закрытие формы при нажатии отвечает data-dismiss="modal" -->
+                                <button type="button" class="btn btn-secondary mb-2" data-dismiss="modal"><b>Cancel</b></button>
+                                <button type="submit" class="btn btn-primary mb-2"><b>Reserve</b></button>
+                            </div>
+                        </dl>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <header class="jumbotron">
         <!-- container - это базовый layout элемен, который описывает параметры области, в которой все будет отображаться -->
         <div class="container">
@@ -100,10 +181,10 @@
                     <img src="img/logo.png" class="img-fluid">
                 </div>
                 <div class="col-12 col-sm-3 align-self-center">
-                    <a role="button" class="btn btn-block nav-link btn-warning"
-                       data-toggle="tooltip" data-html="true"
-                       title="Or Call us at <br><strong>+852 12345678</strong>"
-                       data-placement="bottom" href="#reserve">Reserve Table</a>
+                    <button role="button" class="btn btn-block nav-link btn-warning"
+                            data-toggle="modal" href="#reserveModal">
+                        Reserve Table
+                    </button>
                 </div>
             </div>
         </div>
@@ -238,62 +319,6 @@
             </div>
         </div>
 
-        <div class="row row-content" id="reserve">
-            <div class="col-12 col-sm-8 offset-sm-2 align-self-center">
-                <div class="card">
-                    <h3 class="card-header bg-warning text-white">Reserve a Table</h3>
-                    <div class="card-body">
-
-                        <!-- persons selector -->
-                        <dl class="row">
-                            <label class="col-sm-2 control-label">Number of Guests</label>
-                            <div class="col-12 col-sm-7 justify-content-center">
-                                <div class="row">
-                                    <div class="col-5 col-sm-2">
-                                        <label class="radio-inline"> <input type="radio" name="persons" id="persons" value="1" checked> <b>1</b> </label>
-                                    </div>
-                                    <div class="col-5 col-sm-2">
-                                        <label class="radio-inline"> <input type="radio" name="persons" id="persons" value="2"> <b>2</b> </label>
-                                    </div>
-                                    <div class="col-5 col-sm-2">
-                                        <label class="radio-inline"> <input type="radio" name="persons" id="persons" value="3"> <b>3</b> </label>
-                                    </div>
-                                    <div class="col-5 col-sm-2">
-                                        <label class="radio-inline"> <input type="radio" name="persons" id="persons" value="4"> <b>4</b> </label>
-                                    </div>
-                                    <div class="col-5 col-sm-2">
-                                        <label class="radio-inline"> <input type="radio" name="persons" id="persons" value="5"> <b>5</b> </label>
-                                    </div>
-                                    <div class="col-5 col-sm-2">
-                                        <label class="radio-inline"> <input type="radio" name="persons" id="persons" value="6"> <b>6</b> </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </dl>
-
-                        <!-- Date and Time -->
-                        <dl class="row">
-                            <label class="col-sm-2 control-label">Date and Time</label>
-                            <div class="col-12 col-sm-9 justify-content-center">
-                                <div class="row">
-                                    <div class="col-12 col-sm-5">
-                                        <input type="text" class="form-control" id="date" placeholder="Date">
-                                    </div>
-                                    <div class="col-12 col-sm-5">
-                                        <input type="text" class="form-control" id="time" placeholder="Time">
-                                    </div>
-                                </div>
-                            </div>
-                        </dl>
-                        <dl class="row">
-                            <div class="col-sm-5 offset-sm-2">
-                                <button type="submit" class="btn btn-primary mb-2"><b>Reserve</b></button>
-                            </div>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <footer>
@@ -345,11 +370,6 @@
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
 </body>
 
 </html>
