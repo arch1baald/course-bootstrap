@@ -35,7 +35,7 @@
                         <span class="fa fa-address-card fa-lg"></span> Contact</a></li>
                 </ul>
                 <span class="navbar-text">
-                    <a id="loginButton">
+                    <a id="navBarLoginButton">
                         <span class="fa fa-sign-in"></span> Login
                     </a>
                 </span>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="form-row">
                             <button type="button" class="btn btn-secondary btn-sm ml-auto" id="loginCancelButton">Cancel</button>
-                            <button type="submit" class="btn btn-primary btn-sm ml-1">Sign in</button>
+                            <button type="submit" class="btn btn-primary btn-sm ml-1" id="loginSignInButton">Sign in</button>
                         </div>
                     </form>
                 </div>
@@ -89,7 +89,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title">Reserve a Table</h4>
                     <!-- &times; - спецсимовл, которого нет на клавиатуре, изображает крестик (умножение) -->
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" id="reserveCloseCross">&times;</button>
                 </div>
 
                 <div class="modal-body">
@@ -152,7 +152,7 @@
                         <!-- Buttons -->
                         <dl class="row">
                             <div class="col-sm-5 offset-sm-2">
-                                <button type="button" class="btn btn-secondary mb-2" data-dismiss="modal"><b>Cancel</b></button>
+                                <button type="button" class="btn btn-secondary mb-2" id="reserveCancelButton"><b>Cancel</b></button>
                                 <button type="submit" class="btn btn-primary mb-2"><b>Reserve</b></button>
                             </div>
                         </dl>
@@ -181,7 +181,7 @@
                 </div>
                 <div class="col-12 col-sm-3 align-self-center">
                     <button role="button" class="btn btn-block nav-link btn-warning"
-                            data-toggle="modal" href="#reserveModal">
+                            id="reserveTableButton" href="#reserveModal">
                         Reserve Table
                     </button>
                 </div>
@@ -391,11 +391,11 @@
         })
     </script>
     <!-- To debug: console.log("") -->
-    <!-- Login Form -->
+    <!-- Assignment 4, Tasks 1, 2, 3 -->
     <script>
         $(document).ready(function () {
-            var idLoginModal = '#loginModal'
-            $('#loginButton').click(function () {
+            let idLoginModal = '#loginModal';
+            $('#navBarLoginButton').click(function () {
                 $(idLoginModal).modal('show');
             });
             $('#loginCloseCross').click(function () {
@@ -404,6 +404,17 @@
             $('#loginCancelButton').click(function () {
                 $(idLoginModal).modal('hide');
             });
+
+            let idReserveModal = '#reserveModal';
+            $('#reserveTableButton').click(function () {
+                $(idReserveModal).modal('show')
+            });
+            $('#reserveCloseCross').click(function () {
+                $(idReserveModal).modal('hide')
+            });
+            $('#reserveCancelButton').click(function () {
+                $(idReserveModal).modal('hide')
+            })
         })
     </script>
 </body>
