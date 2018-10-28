@@ -14,7 +14,7 @@ $(document).ready(function() {
 
     <!-- To debug: console.log("") -->
     <!-- Assignment 4, Tasks 1, 2, 3 -->
-    let idLoginModal = '#loginModal';
+    const idLoginModal = '#loginModal';
     $('#navBarLoginButton').click(function () {
         $(idLoginModal).modal('show');
     });
@@ -25,7 +25,7 @@ $(document).ready(function() {
         $(idLoginModal).modal('hide');
     });
 
-    let idReserveModal = '#reserveModal';
+    const idReserveModal = '#reserveModal';
     $('#reserveTableButton').click(function () {
         $(idReserveModal).modal('show')
     });
